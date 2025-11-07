@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
       // 3.
         let vc = UINavigationController(rootViewController: LoginViewController())
+        
+        vc.setNavigationBarHidden(true, animated: false) // 네비게이션 바 숨기기
       // 4.
         window.rootViewController = vc
       // 5.
