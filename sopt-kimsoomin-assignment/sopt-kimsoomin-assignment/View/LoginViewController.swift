@@ -54,8 +54,7 @@ final class LoginViewController: UIViewController {
         $0.font = .body_r_14
         $0.textColor = .baeminBlack
         $0.isSecureTextEntry = true
-        $0.addLeftPadding(10)
-        $0.addLeftPadding(10)
+        $0.addLeftPadding()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.baeminGray200.cgColor
         $0.layer.cornerRadius = 4

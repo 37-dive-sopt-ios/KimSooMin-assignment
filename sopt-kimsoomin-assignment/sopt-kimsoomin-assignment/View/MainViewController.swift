@@ -42,6 +42,24 @@ final class MainViewController: UIViewController {
         $0.setImage(UIImage(named: "cart"), for: .normal)
     }
     
+    private let searchTextField = UITextField().then {
+        $0.attributedPlaceholder = NSAttributedString(string: "찾아라! 맛있는 음식과 맛집", attributes: [NSAttributedString.Key.foregroundColor : UIColor.baeminGray300])
+        $0.borderStyle = .none
+        $0.layer.borderColor = UIColor.baeminBlack.cgColor
+        $0.layer.borderWidth = 1.0
+        $0.layer.cornerRadius = 20
+        $0.font = .body_r_14
+        $0.textColor = .baeminBlack
+        $0.addLeftPadding(17)
+    }
+    
+    private lazy var searchButton = UIButton().then {
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular)
+        let image = UIImage(systemName: "magnifyingglass", withConfiguration: symbolConfig)
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .baeminGray700
+    }
+    
     // MARK: - Lify Cycle
     
     override func viewDidLoad() {
@@ -55,7 +73,7 @@ final class MainViewController: UIViewController {
     // MARK: - Layouts
     
     private func setLayout() {
-        view.addSubviews(addressLabel,addressDetailButton,personalButtonStackView)
+        view.addSubviews(addressLabel,addressDetailButton,personalButtonStackView, searchTextField,searchButton)
         
         personalButtonStackView.addArrangedSubviews(discountButton, notifyButton, cartButton)
         
@@ -86,6 +104,17 @@ final class MainViewController: UIViewController {
         personalButtonStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(54)
             $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        searchTextField.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(88)
+            $0.height.equalTo(40)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.trailing.equalTo(searchTextField.snp.trailing).inset(17)
+            $0.centerY.equalTo(searchTextField)
         }
         
     }
