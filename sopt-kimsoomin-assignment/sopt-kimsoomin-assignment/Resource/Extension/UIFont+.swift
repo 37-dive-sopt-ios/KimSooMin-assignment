@@ -12,6 +12,8 @@ extension UIFont {
     
     static var head_b_18: UIFont = UIFont(name: "Pretendard-Bold", size: 18)!
     
+    static var head_b_16: UIFont = UIFont(name: "Pretendard-Bold", size: 16)!
+    
     static var title_sb_18: UIFont = UIFont(name: "Pretendard-SemiBold", size: 18)!
     
     static var body_r_14: UIFont =  UIFont(name: "Pretendard-Regular", size: 14)!

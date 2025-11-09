@@ -113,8 +113,6 @@ final class LoginViewController: UIViewController {
         
         setLayout()
         checkTextFieldIsEmpty()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,7 +147,7 @@ final class LoginViewController: UIViewController {
         backButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(48)
             $0.leading.equalToSuperview().offset(16)
-            $0.size.equalTo(40)
+            $0.size.equalTo(36)
         }
         
         idAndEmailTextField.snp.makeConstraints {
