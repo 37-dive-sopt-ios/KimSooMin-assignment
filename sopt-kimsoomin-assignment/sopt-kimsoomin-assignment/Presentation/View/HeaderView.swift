@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  HeaderView.swift
 //  sopt-kimsoomin-assignment
 //
 //  Created by mandoo on 11/9/25.
@@ -9,11 +9,9 @@ import UIKit
 import Then
 import SnapKit
 
-final class MainViewController: UIViewController {
-    // MARK: - Properties
+final class HeaderView: UIView {
     
     // MARK: - UI Components
-    
     private let addressLabel = UILabel().then {
         $0.text = "우리집"
         $0.textColor = .baeminBlack
@@ -60,30 +58,57 @@ final class MainViewController: UIViewController {
         $0.tintColor = .baeminGray700
     }
     
-    // MARK: - Lify Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-        
-        setLayout()
-        
+    private let bMartImage = UIImageView().then {
+        $0.image = UIImage(named: "bMart")
+    }
+   
+    private let coupondiscountStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 2
+        $0.alignment = .leading
     }
     
-    // MARK: - Layouts
+    private let coupondiscountLabel = UILabel().then {
+        $0.text = "전상품 쿠폰팩 + 60%특가"
+        $0.textColor = .baeminBlack
+        $0.font = .head_b_16
+    }
     
+    private let coupondiscountButton = UIButton().then {
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .regular)
+        let image = UIImage(systemName: "chevron.right", withConfiguration: symbolConfig)
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .black
+    }
+    
+    
+    // MARK: - Lify Cycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - Layouts
     private func setLayout() {
-        view.addSubviews(addressLabel,addressDetailButton,personalButtonStackView, searchTextField,searchButton)
+        addSubviews(addressLabel,addressDetailButton,personalButtonStackView,searchTextField,searchButton, bMartImage, coupondiscountStackView)
         
         personalButtonStackView.addArrangedSubviews(discountButton, notifyButton, cartButton)
+        coupondiscountStackView.addArrangedSubviews(coupondiscountLabel,coupondiscountButton)
+        
         
         addressLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(54)
+            $0.top.equalToSuperview().offset(13)
             $0.leading.equalToSuperview().inset(20)
         }
         
         addressDetailButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(63.5)
+            $0.centerY.equalTo(addressLabel)
             $0.leading.equalTo(addressLabel.snp.trailing).offset(3)
             $0.height.equalTo(5)
             $0.width.equalTo(8)
@@ -102,24 +127,31 @@ final class MainViewController: UIViewController {
         }
         
         personalButtonStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(54)
+            $0.top.equalToSuperview().offset(9)
             $0.trailing.equalToSuperview().inset(16)
         }
         
         searchTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(88)
+            $0.top.equalTo(addressLabel.snp.bottom).offset(10)
             $0.height.equalTo(40)
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
-        
+
         searchButton.snp.makeConstraints {
             $0.trailing.equalTo(searchTextField.snp.trailing).inset(17)
             $0.centerY.equalTo(searchTextField)
         }
         
+        bMartImage.snp.makeConstraints {
+            $0.top.equalTo(searchTextField.snp.bottom).offset(24)
+            $0.leading.equalToSuperview().inset(16)
+            $0.height.equalTo(16)
+            $0.width.equalTo(50)
+        }
+        
+        coupondiscountStackView.snp.makeConstraints {
+            $0.top.equalTo(bMartImage.snp.bottom).offset(6)
+            $0.leading.equalToSuperview().inset(16)
+        }
     }
-    
-    // MARK: - Actions
-    
-    // MARK: - Functions
 }

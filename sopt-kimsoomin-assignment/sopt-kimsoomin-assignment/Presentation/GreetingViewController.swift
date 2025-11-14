@@ -116,7 +116,7 @@ final class GreetingViewController: UIViewController {
     
     @objc
     private func goMainButtonDidTap() {
-        pushToMainVC()
+        switchToTabBarView()
     }
     
     // MARK: - Functions
@@ -130,8 +130,15 @@ final class GreetingViewController: UIViewController {
         }
     }
     
-    private func pushToMainVC(){
-        let vc = MainViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    private func switchToTabBarView(){
+        let tabBarController = TabBarViewController()
+        
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.modalTransitionStyle = .crossDissolve
+        
+        self.present(tabBarController, animated: true) {
+            self.view.window?.rootViewController = tabBarController
+            self.view.window?.makeKeyAndVisible()
+        }
     }
 }
