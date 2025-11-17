@@ -15,9 +15,22 @@
 		770452492EB21998009C873E /* sopt-kimsoomin-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sopt-kimsoomin-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		77E49AE62ECAAB7700BC5F91 /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 770452482EB21998009C873E /* sopt-kimsoomin-assignment */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7704524B2EB21998009C873E /* sopt-kimsoomin-assignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				77E49AE62ECAAB7700BC5F91 /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */,
+			);
 			path = "sopt-kimsoomin-assignment";
 			sourceTree = "<group>";
 		};
