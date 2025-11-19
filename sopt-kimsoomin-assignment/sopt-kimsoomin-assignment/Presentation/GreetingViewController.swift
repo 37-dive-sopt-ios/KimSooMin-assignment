@@ -49,14 +49,14 @@ final class GreetingViewController: UIViewController {
         $0.numberOfLines = 0
     }
     
-    private lazy var goLoginButton = UIButton().then{
+    private lazy var goMainButton = UIButton().then{
         $0.backgroundColor = .baeminMint500
-        $0.setTitle("뒤로가기", for: .normal)
+        $0.setTitle("메인으로 가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .head_b_18
         $0.layer.cornerRadius = 4
         $0.isEnabled = true
-        $0.addTarget(self, action: #selector(goBackButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(goMainButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Lifecycle
@@ -65,15 +65,18 @@ final class GreetingViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        setUI()
         setLayout()
         bindUserID()
     }
     
-    // MARK: - Layout
+    // MARK: - Setup Methods
+    
+    private func setUI() {
+        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goMainButton)
+    }
     
     private func setLayout() {
-        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goLoginButton)
-        
         sloganLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(57)
@@ -101,7 +104,7 @@ final class GreetingViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
         
-        goLoginButton.snp.makeConstraints {
+        goMainButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(48)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(46)
@@ -115,6 +118,11 @@ final class GreetingViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc
+    private func goMainButtonDidTap() {
+        switchToTabBarView()
+    }
+    
     // MARK: - Functions
     
     func bindUserID() {
@@ -123,6 +131,18 @@ final class GreetingViewController: UIViewController {
             baeminWelcomeLabel.text = "\(trimmedId)님 반가워요!"
         } else {
             baeminWelcomeLabel.text = "배민 회원님 반가워요!"
+        }
+    }
+    
+    private func switchToTabBarView(){
+        let tabBarController = TabBarViewController()
+        
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.modalTransitionStyle = .crossDissolve
+        
+        self.present(tabBarController, animated: true) {
+            self.view.window?.rootViewController = tabBarController
+            self.view.window?.makeKeyAndVisible()
         }
     }
 }
