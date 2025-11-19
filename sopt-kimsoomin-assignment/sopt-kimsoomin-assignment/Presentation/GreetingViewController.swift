@@ -49,14 +49,14 @@ final class GreetingViewController: UIViewController {
         $0.numberOfLines = 0
     }
     
-    private lazy var goLoginButton = UIButton().then{
+    private lazy var goMainButton = UIButton().then{
         $0.backgroundColor = .baeminMint500
-        $0.setTitle("뒤로가기", for: .normal)
+        $0.setTitle("메인으로 가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .head_b_18
         $0.layer.cornerRadius = 4
         $0.isEnabled = true
-        $0.addTarget(self, action: #selector(goBackButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(goMainButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Lifecycle
@@ -72,7 +72,7 @@ final class GreetingViewController: UIViewController {
     // MARK: - Layout
     
     private func setLayout() {
-        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goLoginButton)
+        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goMainButton)
         
         sloganLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -101,7 +101,7 @@ final class GreetingViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
         
-        goLoginButton.snp.makeConstraints {
+        goMainButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(48)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(46)
@@ -109,20 +109,16 @@ final class GreetingViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @objc
     private func goBackButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-<<<<<<<< HEAD:sopt-kimsoomin-assignment/sopt-kimsoomin-assignment/GreetingViewController.swift
-========
     @objc
     private func goMainButtonDidTap() {
         switchToTabBarView()
     }
     
->>>>>>>> a2e4467 ([feat]: 3주차 배민 메인피드화면):sopt-kimsoomin-assignment/sopt-kimsoomin-assignment/Presentation/GreetingViewController.swift
     // MARK: - Functions
     
     func bindUserID() {
@@ -133,9 +129,6 @@ final class GreetingViewController: UIViewController {
             baeminWelcomeLabel.text = "배민 회원님 반가워요!"
         }
     }
-<<<<<<<< HEAD:sopt-kimsoomin-assignment/sopt-kimsoomin-assignment/GreetingViewController.swift
-========
-    
     private func switchToTabBarView(){
         let tabBarController = TabBarViewController()
         
@@ -147,5 +140,4 @@ final class GreetingViewController: UIViewController {
             self.view.window?.makeKeyAndVisible()
         }
     }
->>>>>>>> a2e4467 ([feat]: 3주차 배민 메인피드화면):sopt-kimsoomin-assignment/sopt-kimsoomin-assignment/Presentation/GreetingViewController.swift
 }

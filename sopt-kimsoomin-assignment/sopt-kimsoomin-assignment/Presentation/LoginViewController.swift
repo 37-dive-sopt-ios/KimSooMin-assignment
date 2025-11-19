@@ -54,8 +54,7 @@ final class LoginViewController: UIViewController {
         $0.font = .body_r_14
         $0.textColor = .baeminBlack
         $0.isSecureTextEntry = true
-        $0.addLeftPadding(10)
-        $0.addLeftPadding(10)
+        $0.addLeftPadding()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.baeminGray200.cgColor
         $0.layer.cornerRadius = 4
@@ -113,8 +112,6 @@ final class LoginViewController: UIViewController {
         
         setLayout()
         checkTextFieldIsEmpty()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,7 +146,7 @@ final class LoginViewController: UIViewController {
         backButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(48)
             $0.leading.equalToSuperview().offset(16)
-            $0.size.equalTo(40)
+            $0.size.equalTo(36)
         }
         
         idAndEmailTextField.snp.makeConstraints {
