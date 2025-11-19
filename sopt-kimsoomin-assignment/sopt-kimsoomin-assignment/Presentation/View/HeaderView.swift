@@ -12,6 +12,7 @@ import SnapKit
 final class HeaderView: UIView {
     
     // MARK: - UI Components
+    
     private let addressLabel = UILabel().then {
         $0.text = "우리집"
         $0.textColor = .baeminBlack
@@ -81,11 +82,13 @@ final class HeaderView: UIView {
         $0.tintColor = .black
     }
     
-    
     // MARK: - Lify Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        
+        setUI()
         setLayout()
     }
     
@@ -93,15 +96,16 @@ final class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: - Layouts
-    private func setLayout() {
+    private func setUI() {
         addSubviews(addressLabel,addressDetailButton,personalButtonStackView,searchTextField,searchButton, bMartImage, coupondiscountStackView)
         
         personalButtonStackView.addArrangedSubviews(discountButton, notifyButton, cartButton)
         coupondiscountStackView.addArrangedSubviews(coupondiscountLabel,coupondiscountButton)
-        
-        
+    }
+    
+    private func setLayout() {
         addressLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(13)
             $0.leading.equalToSuperview().inset(20)

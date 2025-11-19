@@ -12,10 +12,11 @@ import SnapKit
 final class PopularRankCollectionView: UIView {
     
     // MARK: - Properties
+    
     private let rankingItems = PopularRankModel.mockData
     
-    
     // MARK: - UI Components
+    
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout().then {
@@ -30,11 +31,13 @@ final class PopularRankCollectionView: UIView {
         $0.isScrollEnabled = true
     }
     
-    
     // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        
+        setUI()
         setLayout()
         register()
         setDelegate()
@@ -44,8 +47,22 @@ final class PopularRankCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
+    
+    private func setUI() {
+        addSubview(collectionView)
+    }
+    
+    private func setLayout() {
+        collectionView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(300)
+        }
+    }
     
     // MARK: - Functions
+    
     private func register() {
         collectionView.register(PopularRankCell.self, forCellWithReuseIdentifier: PopularRankCell.identifier)
     }
@@ -54,19 +71,10 @@ final class PopularRankCollectionView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
-    private func setLayout() {
-        addSubview(collectionView)
-        collectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(300)
-        }
-    }
 }
 
-
 // MARK: - UICollectionViewDataSource
+
 extension PopularRankCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return rankingItems.count
@@ -81,8 +89,8 @@ extension PopularRankCollectionView: UICollectionViewDataSource {
     }
 }
 
-
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension PopularRankCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

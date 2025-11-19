@@ -12,10 +12,11 @@ import SnapKit
 final class CommercialView: UIView {
     
     //MARK: - Properties
+    
     private let commercials = CommercialModel.mockData
     
-    
     //MARK: - UI Components
+    
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout().then {
@@ -31,10 +32,12 @@ final class CommercialView: UIView {
         $0.isScrollEnabled = true
     }
     
-    
     //MARK: - Lify Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setUI()
         setLayout()
         setDelegate()
         register()
@@ -44,17 +47,20 @@ final class CommercialView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup Methods
     
-    //MARK: - Layout
-    private func setLayout() {
+    private func setUI() {
         addSubview(collectionView)
+    }
+    
+    private func setLayout() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    
     // MARK: - Functions
+    
     private func register() {
         collectionView.register(CommercialCell.self, forCellWithReuseIdentifier: CommercialCell.identifier)
     }
@@ -63,10 +69,10 @@ final class CommercialView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension CommercialView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return commercials.count
@@ -82,6 +88,7 @@ extension CommercialView: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension CommercialView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

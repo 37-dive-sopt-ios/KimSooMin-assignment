@@ -12,10 +12,11 @@ import SnapKit
 final class CategoryTabView: UIView {
     
     // MARK: - Properties
+    
     private let categories = ["음식배달", "픽업", "장보기·쇼핑", "선물하기", "혜택보기"]
     
-    
     // MARK: - UI Components
+    
     private let categoryStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 14
@@ -29,11 +30,12 @@ final class CategoryTabView: UIView {
         $0.backgroundColor = .baeminGray200
     }
     
-    
     // MARK: - Lify Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        setUI()
         setLayout()
         configureCategories()
     }
@@ -42,11 +44,13 @@ final class CategoryTabView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: - Layouts
-    private func setLayout() {
+    private func setUI() {
         addSubviews(categoryStackView, indicatorView, lineView)
-        
+    }
+    
+    private func setLayout() {
         categoryStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(18)
@@ -67,8 +71,8 @@ final class CategoryTabView: UIView {
             
     }
     
-    
     // MARK: - Functions
+    
     private func configureCategories() {
         for (index, title) in categories.enumerated() {
             let button = UIButton().then {

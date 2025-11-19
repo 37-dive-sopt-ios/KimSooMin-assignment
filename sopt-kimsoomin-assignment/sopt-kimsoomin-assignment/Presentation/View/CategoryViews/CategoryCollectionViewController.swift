@@ -12,6 +12,7 @@ import SnapKit
 final class CategoryCollectionView: UIView {
     
     // MARK: - Properties
+    
     private let lineSpacing: CGFloat = 12
     private let interSpacing: CGFloat = 8
     private let numberOfItemsInRow: CGFloat = 5
@@ -19,8 +20,8 @@ final class CategoryCollectionView: UIView {
     
     private var categories: [CategoryData]
     
-
     // MARK: - UI Components
+    
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout().then {
@@ -33,34 +34,37 @@ final class CategoryCollectionView: UIView {
         $0.backgroundColor = .white
     }
     
-    
     // MARK: - Lify Cycle
+    
     init(categories: [CategoryData]) {
-            self.categories = categories
-            super.init(frame: .zero)
-            self.backgroundColor = .white
+        self.categories = categories
+        super.init(frame: .zero)
+        self.backgroundColor = .white
         
-            setLayout()
-            setDelegate()
-            register()
-        }
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+        setUI()
+        setLayout()
+        setDelegate()
+        register()
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    // MARK: - Layouts
-    private func setLayout() {
+    // MARK: - Setup Methods
+    
+    private func setUI() {
         addSubview(collectionView)
-        
+    }
+    
+    private func setLayout() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    
     // MARK: - Functions
+    
     private func register() {
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }
@@ -71,16 +75,16 @@ final class CategoryCollectionView: UIView {
     }
 }
 
-
 // MARK: - UICollectionViewDelegate
+
 extension CategoryCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(categories[indexPath.item].name)")
     }
 }
 
-
 // MARK: - UICollectionViewDataSource
+
 extension CategoryCollectionView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -95,8 +99,8 @@ extension CategoryCollectionView: UICollectionViewDataSource {
     }
 }
 
-
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension CategoryCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = 62

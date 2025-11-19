@@ -12,10 +12,11 @@ import Then
 final class CategoryCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier: String = "CategoryCollectionViewCell"
     
+    static let identifier: String = "CategoryCell"
     
     // MARK: - UI Components
+    
     private let iconImageView = UIImageView().then {
         $0.layer.cornerRadius = 20
         $0.clipsToBounds = true
@@ -28,12 +29,13 @@ final class CategoryCell: UICollectionViewCell {
         $0.adjustsFontSizeToFitWidth = true
     }
     
-    
     // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         contentView.backgroundColor = .white
+        setUI()
         setLayout()
     }
     
@@ -41,11 +43,13 @@ final class CategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: - Layouts
-    private func setLayout() {
+    private func setUI() {
         contentView.addSubviews(iconImageView, nameLabel)
-        
+    }
+    
+    private func setLayout() {
         iconImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
@@ -59,8 +63,8 @@ final class CategoryCell: UICollectionViewCell {
         }
     }
     
-    
     // MARK: - Configuration
+    
     public func configure(category: CategoryData) {
         iconImageView.image = category.image
         nameLabel.text = category.name
