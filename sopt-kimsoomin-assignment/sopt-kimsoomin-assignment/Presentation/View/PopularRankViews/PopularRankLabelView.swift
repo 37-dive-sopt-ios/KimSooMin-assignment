@@ -12,6 +12,7 @@ import Then
 final class PopularRankLabelView: UIView {
     
     // MARK: - UI Components
+    
     private let titleStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 3
@@ -47,11 +48,13 @@ final class PopularRankLabelView: UIView {
         $0.tintColor = .baeminBlack
     }
     
-    
     // MARK: - Lify Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        
+        setUI()
         setLayout()
     }
     
@@ -59,14 +62,16 @@ final class PopularRankLabelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: Layout
-    private func setLayout(){
+    private func setUI(){
         addSubviews(titleStackView, seeAllStackView)
         
         titleStackView.addArrangedSubviews(titleLabel, infoButton)
         seeAllStackView.addArrangedSubviews(seeAllLabel, seeAllButton)
-        
+    }
+    
+    private func setLayout(){
         titleStackView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)

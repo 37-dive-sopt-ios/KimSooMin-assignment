@@ -12,6 +12,7 @@ import SnapKit
 final class BaeminFeedViewController: UIViewController {
     
     // MARK: - UI Components
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -31,23 +32,25 @@ final class BaeminFeedViewController: UIViewController {
     private let popoularRankLabelView = PopularRankLabelView()
     private let popoularRankCollectionView = PopularRankCollectionView()
     
-    
     // MARK: - Lify Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .baeminWhite
         
+        setUI()
         setLayout()
     }
     
-    
-    // MARK: - Layouts
-    private func setLayout() {
+    // MARK: - Setup Methods
+    private func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
         contentView.addSubviews(headerView,categoryTabView, foodCategoryView, lineView, moreInfoView, martCategoryView, commercialView, popoularRankLabelView, popoularRankCollectionView)
-        
+    }
+    
+    private func setLayout() {
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

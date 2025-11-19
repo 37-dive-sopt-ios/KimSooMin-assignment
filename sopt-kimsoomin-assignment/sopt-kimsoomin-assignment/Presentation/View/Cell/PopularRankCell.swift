@@ -12,10 +12,11 @@ import Then
 final class PopularRankCell: UICollectionViewCell {
     
     // MARK: - Properties
+    
     static let identifier = "PopularRankCollectionViewCell"
-    
-    
+
     // MARK: - UI Components
+    
     private let image = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 8
@@ -82,10 +83,11 @@ final class PopularRankCell: UICollectionViewCell {
         $0.textColor = .baeminPurple
     }
     
-    
     // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUI()
         setLayout()
         
     }
@@ -94,16 +96,17 @@ final class PopularRankCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: - Layouts
-    private func setLayout() {
-        
+    private func setUI() {
         contentView.addSubviews(image, restaurantNameLabel, starRatingStackView, reviewCountLabel, menuNameLabel, priceInfoStackView, oldPriceLabel, minimumPriceLabel)
         
         starRatingStackView.addArrangedSubviews(starIcon,starRateLabel)
         
         priceInfoStackView.addArrangedSubviews(percentOffLabel, newPriceLabel)
-        
+    }
+    
+    private func setLayout() {
         image.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
             $0.size.equalTo(145)
@@ -147,8 +150,8 @@ final class PopularRankCell: UICollectionViewCell {
         }
     }
     
-    
     // MARK: - Configuration
+    
     func configure(with model: PopularRankModel) {
         reviewCountLabel.text = "(\(model.review))"
         image.image = model.image

@@ -65,15 +65,18 @@ final class GreetingViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        setUI()
         setLayout()
         bindUserID()
     }
     
-    // MARK: - Layout
+    // MARK: - Setup Methods
+    
+    private func setUI() {
+        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goMainButton)
+    }
     
     private func setLayout() {
-        view.addSubviews(sloganLabel, backButton, baeminImageView, baeminWelcomeLabel, welcomeLabel,goMainButton)
-        
         sloganLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(57)
@@ -109,6 +112,7 @@ final class GreetingViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @objc
     private func goBackButtonDidTap() {
         self.navigationController?.popViewController(animated: true)

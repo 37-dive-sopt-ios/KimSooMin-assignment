@@ -12,10 +12,11 @@ import Then
 final class CommercialCell: UICollectionViewCell {
     
     // MARK: - Properties
+    
     static let identifier = "CommercialCollectionViewCell"
     
-    
     // MARK: - UI Components
+    
     private let image = UIImageView().then {
         $0.contentMode = .scaleAspectFill
     }
@@ -34,8 +35,8 @@ final class CommercialCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Configuration
+    
     func configure(with model: CommercialModel) {
         image.image = model.image
     }

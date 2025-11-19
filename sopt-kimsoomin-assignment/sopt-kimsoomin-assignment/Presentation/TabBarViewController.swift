@@ -21,6 +21,7 @@ final class EmptyViewController: UIViewController {
 final class TabBarViewController: UITabBarController {
     
     //MARK: - Properties
+    
     enum BaeminTab: Int, CaseIterable {
         case home = 0
         case shopping
@@ -65,6 +66,7 @@ final class TabBarViewController: UITabBarController {
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,8 +98,8 @@ final class TabBarViewController: UITabBarController {
         tabBar.scrollEdgeAppearance = appearance
     }
     
-    
     // MARK: - Functions
+    
     private func viewController(for rootViewController: UIViewController,
                                 title: String,
                                 imageName: UIImage) -> UIViewController {

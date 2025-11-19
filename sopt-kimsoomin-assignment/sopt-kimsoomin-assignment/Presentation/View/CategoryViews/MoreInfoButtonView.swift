@@ -13,6 +13,7 @@ import SnapKit
 final class MoreInfoView: UIView {
     
     // MARK: - UI Components
+    
     private let MoreInfoStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.alignment = .center
@@ -31,7 +32,6 @@ final class MoreInfoView: UIView {
         $0.font = .body_r_14
     }
     
-    
     private let moreButton = UIButton().then {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .regular)
         let image = UIImage(systemName: "chevron.right", withConfiguration: symbolConfig)
@@ -39,11 +39,12 @@ final class MoreInfoView: UIView {
         $0.tintColor = .black
     }
     
-    
     // MARK: - Lify Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
+        setUI()
         setLayout()
     }
     
@@ -51,13 +52,15 @@ final class MoreInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
     
-    // MARK: - Layouts
-    private func setLayout() {
+    private func setUI() {
         addSubview(MoreInfoStackView)
         
         MoreInfoStackView.addArrangedSubviews(foodDeliveryLabel,moreLabel,moreButton)
-        
+    }
+    
+    private func setLayout() {
         MoreInfoStackView.snp.makeConstraints {
             $0.edges.equalToSuperview().offset(5)
             $0.centerX.equalToSuperview()

@@ -11,6 +11,8 @@ import SnapKit
 
 final class LoginViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     private let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
     
@@ -110,6 +112,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        setUI()
         setLayout()
         checkTextFieldIsEmpty()
     }
@@ -119,14 +122,9 @@ final class LoginViewController: UIViewController {
         initializing()
     }
     
-    private func checkTextChanghe(){
-        idAndEmailTextField.addTarget(self, action: #selector(checkTextField), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(checkTextField), for: .editingChanged)
-    }
+    // MARK: - Setup Methods
     
-    // MARK: - Layout
-    
-    private func setLayout() {
+    private func setUI() {
         view.addSubviews(backButton,
                          continueWithLabel,
                          idAndEmailTextField,
@@ -137,7 +135,9 @@ final class LoginViewController: UIViewController {
         
         passwordStackView.addArrangedSubviews(clearPasswordButton,securityToggleButton)
         findAccountStackView.addArrangedSubviews(findAccountLabel, findAccountButton)
-        
+    }
+    
+    private func setLayout() {
         continueWithLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(57)
@@ -178,7 +178,6 @@ final class LoginViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
     }
-    
     
     // MARK: - Actions
     
@@ -229,7 +228,6 @@ final class LoginViewController: UIViewController {
         pushToWelcomeVC()
     }
     
-    
     // MARK: - Functions
     
     func initializing() {
@@ -262,5 +260,10 @@ final class LoginViewController: UIViewController {
         let vc = GreetingViewController()
         vc.id = idAndEmailTextField.text
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func checkTextChanghe(){
+        idAndEmailTextField.addTarget(self, action: #selector(checkTextField), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(checkTextField), for: .editingChanged)
     }
 }
