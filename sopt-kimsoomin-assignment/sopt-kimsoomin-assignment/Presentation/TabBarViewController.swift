@@ -32,7 +32,7 @@ final class TabBarViewController: UITabBarController {
         var title: String {
             switch self {
             case .home: return "홈"
-            case .shopping: return "장보기·쇼핑"
+            case .shopping: return "서버"
             case .heart: return "찜"
             case .order: return "주문내역"
             case .mybaemin: return "마이배민"
@@ -54,7 +54,7 @@ final class TabBarViewController: UITabBarController {
             case .home:
                 return BaeminFeedViewController()
             case .shopping:
-                return EmptyViewController(backgroundColor: .baeminMint300)
+                return LoginViewController_Network()
             case .heart:
                 return EmptyViewController(backgroundColor: .baeminRed)
             case .order:
