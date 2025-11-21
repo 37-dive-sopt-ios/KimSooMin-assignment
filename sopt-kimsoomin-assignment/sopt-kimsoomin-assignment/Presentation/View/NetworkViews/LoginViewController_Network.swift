@@ -100,7 +100,7 @@ final class LoginViewController_Network: BaseViewController {
         let image = UIImage(systemName: "chevron.right", withConfiguration: symbolConfig)
         $0.setImage(image, for: .normal)
         $0.tintColor = .black
-        $0.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Lifecycle
@@ -200,7 +200,7 @@ final class LoginViewController_Network: BaseViewController {
         }
     }
     
-    @objc private func registerButtonTapped() {
+    @objc private func signUpButtonTapped() {
         let signUpVC = SignUpViewController_Network()
         navigationController?.pushViewController(signUpVC, animated: true)
     }
@@ -232,7 +232,6 @@ final class LoginViewController_Network: BaseViewController {
                 password: password,
                 provider: provider
             )
-            
             showAlert(title: "로그인 성공", message: response.message) { [weak self] in
                 self?.navigateToGreeting(userId: response.userId, userName: username)
             }

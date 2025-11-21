@@ -65,7 +65,7 @@ extension UserAPI: TargetType {
 
 
 extension UserAPI {
-    static func performRegister(
+    static func performSignUp(
         username: String,
         password: String,
         name: String,

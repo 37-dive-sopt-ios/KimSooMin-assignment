@@ -229,7 +229,7 @@ final class SignUpViewController_Network: BaseViewController {
         }
         
         Task {
-            await performRegister(
+            await performSignUp(
                 username: username,
                 password: password,
                 name: name,
@@ -259,7 +259,7 @@ final class SignUpViewController_Network: BaseViewController {
     // MARK: - Network Methods
     
     @MainActor
-    private func performRegister(
+    private func performSignUp(
         username: String,
         password: String,
         name: String,
@@ -269,7 +269,7 @@ final class SignUpViewController_Network: BaseViewController {
         loadingIndicator.startAnimating()
         
         do {
-            let response = try await UserAPI.performRegister(
+            let response = try await UserAPI.performSignUp(
                 username: username,
                 password: password,
                 name: name,
