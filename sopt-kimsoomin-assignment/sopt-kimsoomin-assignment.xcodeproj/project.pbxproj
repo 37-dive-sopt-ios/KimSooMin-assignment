@@ -16,7 +16,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7704525B2EB2199A009C873E /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */ = {
+		77E49AE62ECAAB7700BC5F91 /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -29,7 +29,7 @@
 		7704524B2EB21998009C873E /* sopt-kimsoomin-assignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7704525B2EB2199A009C873E /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */,
+				77E49AE62ECAAB7700BC5F91 /* Exceptions for "sopt-kimsoomin-assignment" folder in "sopt-kimsoomin-assignment" target */,
 			);
 			path = "sopt-kimsoomin-assignment";
 			sourceTree = "<group>";
