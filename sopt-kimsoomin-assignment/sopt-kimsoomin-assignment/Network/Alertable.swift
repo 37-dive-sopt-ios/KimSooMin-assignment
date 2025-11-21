@@ -11,8 +11,6 @@ public protocol Alertable: AnyObject {
     func showAlert(title: String, message: String, completion: (() -> Void)?)
 }
 
-// MARK: - 기본 구현
-
 public extension Alertable where Self: UIViewController {
     func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -158,7 +158,6 @@ final class GreetingViewController_Network: BaseViewController {
             message: "사용자 정보가 모두 삭제됩니다",
             preferredStyle: .alert
         )
-        
         alert.addAction(UIAlertAction(title: "취소하기", style: .cancel))
         alert.addAction(UIAlertAction(title: "탈퇴하기", style: .destructive, handler: { _ in
             Task { await self.deleteUser() }
