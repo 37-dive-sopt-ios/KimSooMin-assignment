@@ -112,7 +112,6 @@ final class GreetingViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @objc
     private func goBackButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
