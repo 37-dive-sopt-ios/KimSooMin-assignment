@@ -1,3 +1,4 @@
+# KimSooMin-assignment
 <img width="1564" height="280" alt="sopt" src="https://github.com/user-attachments/assets/3c508560-ebeb-4db5-88c8-9f8d0eb865d9" />
 
 <div align="center">
